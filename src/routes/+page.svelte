@@ -3,12 +3,15 @@
   import Card from "$lib/Card.svelte";
   import { svelteEnumFrom } from "$lib/utils/svelteEnum";
 
+  const cssVersion = "0.1.0";
+
   const suits = svelteEnumFrom(Suit);
   const denominations = svelteEnumFrom(Denomination);
 </script>
 
 <svelte:head>
   <title>Pirate Deck Solitaire</title>
+  <link rel="stylesheet" href="{cssVersion}.css" />
 </svelte:head>
 
 <main>
@@ -19,18 +22,3 @@
     {/each}
   {/each}
 </main>
-
-<style global>
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    background-color: rgb(55, 75, 111);
-  }
-  main {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(16, 2.7vh);
-    justify-items: center;
-  }
-</style>

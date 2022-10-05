@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(55, 75, 111);
+}
+main {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(16, 2.2vh);
+  justify-items: center;
+}
+.card {
+  --aquamarine: #00ff80;
+  --black: black;
+  --rose: #e30071;
+  --white: white;
+
+  border: 0.5px solid black;
+  border-radius: 1vw;
+  background-color: var(--background-color, gold);
+  color: var(--color, purple);
+  display: grid;
+  filter: drop-shadow(3px 3px 5px #0006);
+  font-family: system-ui, sans-serif;
+  font-size: 1.5vw;
+  font-weight: bold;
+  grid-template-areas:
+    "top-left . ."
+    "center center center"
+    ". . bottom-right";
+  grid-template-columns: 2ch 1fr 2ch;
+  grid-template-rows: auto 1fr auto;
+  height: 30vw;
+  padding: 0.5vw;
+  place-items: center;
+  width: 20vw;
+}
+.top-left {
+  grid-area: top-left;
+}
+.center {
+  font-size: 6vw;
+  grid-area: center;
+}
+.bottom-right {
+  grid-area: bottom-right;
+  rotate: 180deg;
+}
+[id$="♣"] {
+  --background-color: var(--aquamarine);
+  --color: var(--black);
+}
+[id$="♦"] {
+  --background-color: var(--black);
+  --color: var(--aquamarine);
+  border: 0.5px solid grey;
+}
+[id$="♥"] {
+  --background-color: var(--white);
+  --color: var(--rose);
+}
+[id$="♠"] {
+  --background-color: var(--rose);
+  --color: var(--white);
+}
