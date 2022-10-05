@@ -4,7 +4,7 @@ export enum Suit {
   Hearts = "♥",
   Spades = "♠",
 }
-export enum Denomination {
+export enum Rank {
   One = "1",
   Two = "2",
   Three = "3",
@@ -20,5 +20,5 @@ export enum Denomination {
   Clairvoyant = "C",
   Doctor = "D",
   Empress = "E",
-  Fool = "F",
+  Fool = "F0",
 }

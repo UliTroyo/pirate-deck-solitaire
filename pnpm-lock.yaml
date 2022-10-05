@@ -5,6 +5,7 @@ specifiers:
   '@sveltejs/kit': next
   '@typescript-eslint/eslint-plugin': ^5.27.0
   '@typescript-eslint/parser': ^5.27.0
+  '@xstate/svelte': ^2.0.0
   eslint: ^8.16.0
   eslint-plugin-svelte3: ^4.0.0
   svelte: ^3.44.0
@@ -13,6 +14,11 @@ specifiers:
   tslib: ^2.3.1
   typescript: ^4.7.4
   vite: ^3.1.0
+  xstate: ^4.33.6
+
+dependencies:
+  '@xstate/svelte': 2.0.0_daefe46mu5hy6sxjhth26qgj5m
+  xstate: 4.33.6
 
 devDependencies:
   '@sveltejs/adapter-static': 1.0.0-next.44
@@ -340,6 +346,22 @@ packages:
       '@typescript-eslint/types': 5.39.0
       eslint-visitor-keys: 3.3.0
     dev: true
+
+  /@xstate/svelte/2.0.0_daefe46mu5hy6sxjhth26qgj5m:
+    resolution: {integrity: sha512-051btq174/fc0lsFUsl5xLbpzEGF4lg6unV1uimjQwKxYTwF2GZXKlcQx2dW7WYpqeH0CWoKvKtb2qIBsnxq5A==}
+    peerDependencies:
+      '@xstate/fsm': ^2.0.0
+      svelte: ^3.24.1
+      xstate: ^4.32.0
+    peerDependenciesMeta:
+      '@xstate/fsm':
+        optional: true
+      xstate:
+        optional: true
+    dependencies:
+      svelte: 3.50.1
+      xstate: 4.33.6
+    dev: false
 
   /acorn-jsx/5.3.2_acorn@8.8.0:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -1584,7 +1606,6 @@ packages:
   /svelte/3.50.1:
     resolution: {integrity: sha512-bS4odcsdj5D5jEg6riZuMg5NKelzPtmsCbD9RG+8umU03TeNkdWnP6pqbCm0s8UQNBkqk29w/Bdubn3C+HWSwA==}
     engines: {node: '>= 8'}
-    dev: true
 
   /text-table/0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
@@ -1701,6 +1722,10 @@ packages:
   /wrappy/1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
     dev: true
+
+  /xstate/4.33.6:
+    resolution: {integrity: sha512-A5R4fsVKADWogK2a43ssu8Fz1AF077SfrKP1ZNyDBD8lNa/l4zfR//Luofp5GSWehOQr36Jp0k2z7b+sH2ivyg==}
+    dev: false
 
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
