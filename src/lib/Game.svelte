@@ -89,7 +89,56 @@
 </script>
 
 <main>
-  {#each cards as cardIndex}
-    <Card id={cardIndex} />
-  {/each}
+  <div id="column1">
+    {#each $state.context.column1 as card}
+      <Card id={card} />
+    {/each}
+  </div>
+  <div id="column2">
+    {#each $state.context.column2 as card}
+      <Card id={card} />
+    {/each}
+  </div>
+  <div id="column3">
+    {#each $state.context.column3 as card}
+      <Card id={card} />
+    {/each}
+  </div>
+  <div id="column4">
+    {#each $state.context.column4 as card}
+      <Card id={card} />
+    {/each}
+  </div>
+  <div id="stack1">
+    {#each $state.context.stack1 as card}
+      <Card id={card} />
+    {/each}
+  </div>
+  <div id="stack2">
+    {#each $state.context.stack2 as card}
+      <Card id={card} />
+    {/each}
+  </div>
+  <div id="stack3">
+    {#each $state.context.stack3 as card}
+      <Card id={card} />
+    {/each}
+  </div>
+  <div id="stack4">
+    {#each $state.context.stack4 as card}
+      <Card id={card} />
+    {/each}
+  </div>
 </main>
+
+<style global>
+  [id^="column"] {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, 1.5em);
+  }
+  [id^="stack"] {
+    display: grid;
+    grid-row: 2;
+    grid-template-rows: repeat(auto-fit, 0.2em);
+  }
+</style>

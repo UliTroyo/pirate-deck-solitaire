@@ -5,13 +5,14 @@ body {
   background-color: rgb(55, 75, 111);
 }
 main {
+  align-content: start;
   display: grid;
   grid-template-columns: repeat(4, auto);
-  grid-template-rows: repeat(16, 2.2vh);
+  grid-template-rows: 600px 300px;
   justify-items: center;
 }
 .card {
-  --aquamarine: #00ff80;
+  --aquamarine: #00ff99;
   --black: black;
   --rose: #e30071;
   --white: white;
@@ -30,7 +31,11 @@ main {
   grid-template-rows: auto auto 1fr auto auto;
   padding: 0.3em;
   place-items: center;
+  user-select: none;
   width: 20vw;
+}
+.card.flipped > span {
+  display: none;
 }
 .card > .suit {
   margin-bottom: 0.2em;
