@@ -7,6 +7,9 @@
   import { useMachine } from "@xstate/svelte";
   import { createSolitaireMachine } from "$lib/xstateStore";
 
+  // Get rid of poop global
+  const STACK_HEIGHT = 10;
+
   const ranks = <string[]>svelteEnumFrom(Rank);
   const suits = <string[]>svelteEnumFrom(Suit);
 
@@ -18,48 +21,23 @@
   console.log($state.context);
 </script>
 
-<main>
-  <div id="column1">
-    {#each $state.context.column1 as card}
-      <Card id={card} />
-    {/each}
-  </div>
-  <div id="column2">
-    {#each $state.context.column2 as card}
-      <Card id={card} />
-    {/each}
-  </div>
-  <div id="column3">
-    {#each $state.context.column3 as card}
-      <Card id={card} />
-    {/each}
-  </div>
-  <div id="column4">
-    {#each $state.context.column4 as card}
-      <Card id={card} />
-    {/each}
-  </div>
+<main id="layout">
+  {#each Object.entries($state.context.columns) as [name, column]}
+    <div id={name}>
+      {#each column as card}
+        <Card id={card} />
+      {/each}
+    </div>
+  {/each}
 
-  <div id="stack1">
-    {#each $state.context.stack1 as card}
-      <Card id={card} flipped={true} />
-    {/each}
-  </div>
-  <div id="stack2">
-    {#each $state.context.stack2 as card}
-      <Card id={card} flipped={true} />
-    {/each}
-  </div>
-  <div id="stack3">
-    {#each $state.context.stack3 as card}
-      <Card id={card} flipped={true} />
-    {/each}
-  </div>
-  <div id="stack4">
-    {#each $state.context.stack4 as card}
-      <Card id={card} flipped={true} />
-    {/each}
-  </div>
+  {#each Object.entries($state.context.stacks) as [name, stack]}
+    <div id={name}>
+      {#each stack as card, index}
+        {@const flipped = index < STACK_HEIGHT - 1 ? true : false}
+        <Card id={card} {flipped} />
+      {/each}
+    </div>
+  {/each}
 </main>
 
 <style global>

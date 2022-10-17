@@ -5,15 +5,18 @@ export function createSolitaireMachine(shuffledDeck: string[]) {
     throw new Error(`Unexpected deck size: ${shuffledDeck.length}`);
   }
   const context = {
-    column1: shuffledDeck.slice(0, 2),
-    column2: shuffledDeck.slice(2, 6),
-    column3: shuffledDeck.slice(6, 12),
-    column4: shuffledDeck.slice(12, 20),
-    stack1: shuffledDeck.slice(20, 30),
-    stack2: shuffledDeck.slice(30, 40),
-    stack3: shuffledDeck.slice(40, 50),
-    stack4: shuffledDeck.slice(50, 60),
-
+    columns: {
+      column1: shuffledDeck.slice(0, 2),
+      column2: shuffledDeck.slice(2, 6),
+      column3: shuffledDeck.slice(6, 12),
+      column4: shuffledDeck.slice(12, 20),
+    },
+    stacks: {
+      stack1: shuffledDeck.slice(20, 30),
+      stack2: shuffledDeck.slice(30, 40),
+      stack3: shuffledDeck.slice(40, 50),
+      stack4: shuffledDeck.slice(50, 60),
+    },
     grabbed: "",
     validPositions: [
       "column1",
