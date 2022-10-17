@@ -1,6 +1,8 @@
-// Copied from Lodash (MIT):
-// https://github.com/lodash/lodash/blob/master/shuffle.js
-
+/**
+ * Randomly shuffles the values of a string array. Copy-pasted from [Lodash](https://github.com/lodash/lodash/blob/master/shuffle.js), available under the MIT license.
+ * @param array - An array of string values
+ * @returns A copy of the input array but with its values shuffled randomly
+ */
 export function shuffle(array: string[]) {
   const length = array == null ? 0 : array.length;
   if (!length) {

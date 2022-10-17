@@ -1,22 +1,15 @@
 <script lang="ts">
-  import { Rank, Suit } from "$lib/types";
+  import { Deck } from "$lib/types";
   import Card from "$lib/Card.svelte";
-  import { combine } from "$lib/utils/combine";
-  import { shuffle } from "$lib/utils/shuffle";
-  import { svelteEnumFrom } from "$lib/utils/svelteEnum";
   import { useMachine } from "@xstate/svelte";
   import { createSolitaireMachine } from "$lib/xstateStore";
 
   // Get rid of poop global
   const STACK_HEIGHT = 10;
 
-  const ranks = <string[]>svelteEnumFrom(Rank);
-  const suits = <string[]>svelteEnumFrom(Suit);
+  const deck = new Deck();
 
-  const deck = combine(ranks, suits);
-  const cards = shuffle(deck);
-
-  const solitaireMachine = createSolitaireMachine(cards);
+  const solitaireMachine = createSolitaireMachine(deck.cards);
   const { state, send } = useMachine(solitaireMachine);
   console.log($state.context);
 </script>

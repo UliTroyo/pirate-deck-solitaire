@@ -1,3 +1,7 @@
+import { combine } from "$lib/utils/combine";
+import { shuffle } from "$lib/utils/shuffle";
+import { arrayFromEnum } from "$lib/utils/arrayFromEnum";
+
 export enum Suit {
   Clubs = "♣",
   Diamonds = "♦",
@@ -20,4 +24,17 @@ export enum Rank {
   Doctor = "D",
   Empress = "E",
   Fool = "F0",
+}
+
+export class Deck {
+  cards: string[];
+  constructor() {
+    const ranks = arrayFromEnum(Rank);
+    const suits = arrayFromEnum(Suit);
+    this.cards = combine(ranks, suits);
+    this.shuffle();
+  }
+  shuffle() {
+    return shuffle(this.cards);
+  }
 }
