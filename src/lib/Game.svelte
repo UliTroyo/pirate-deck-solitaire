@@ -109,24 +109,25 @@
       <Card id={card} />
     {/each}
   </div>
+
   <div id="stack1">
     {#each $state.context.stack1 as card}
-      <Card id={card} />
+      <Card id={card} flipped={true} />
     {/each}
   </div>
   <div id="stack2">
     {#each $state.context.stack2 as card}
-      <Card id={card} />
+      <Card id={card} flipped={true} />
     {/each}
   </div>
   <div id="stack3">
     {#each $state.context.stack3 as card}
-      <Card id={card} />
+      <Card id={card} flipped={true} />
     {/each}
   </div>
   <div id="stack4">
     {#each $state.context.stack4 as card}
-      <Card id={card} />
+      <Card id={card} flipped={true} />
     {/each}
   </div>
 </main>
@@ -140,5 +141,22 @@
     display: grid;
     grid-row: 2;
     grid-template-rows: repeat(auto-fit, 0.2em);
+  }
+  [id$="♣"] {
+    --background-color: var(--aquamarine);
+    --color: var(--black);
+  }
+  [id$="♦"] {
+    --background-color: var(--black);
+    --color: var(--aquamarine);
+    border: 0.5px solid grey;
+  }
+  [id$="♥"] {
+    --background-color: var(--white);
+    --color: var(--rose);
+  }
+  [id$="♠"] {
+    --background-color: var(--rose);
+    --color: var(--white);
   }
 </style>
