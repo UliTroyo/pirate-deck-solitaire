@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Rank, Suit } from "$lib/types";
   export let id: string;
   export let flipped = false;
 
