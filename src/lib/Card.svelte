@@ -1,12 +1,18 @@
 <script lang="ts">
+  import { send } from "$lib/solitaireMachine";
+
   export let id: string;
   export let flipped = false;
 
   let rank = id.length == 2 ? id[0] : id[0] + id[1];
   let suit = id.length == 2 ? id[1] : id[2];
+
+  function grab() {
+    send({ type: "GRAB", card: id });
+  }
 </script>
 
-<div role="img" {id} class="card" class:flipped>
+<div role="img" {id} class="card" class:flipped on:mousedown={grab}>
   <span class="top-left" class:rank>{rank}</span>
   {#if rank == "F0"}
     <span class="top-fool">0L</span>

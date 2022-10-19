@@ -1,18 +1,15 @@
 <script lang="ts">
-  import { Deck } from "$lib/types";
   import Card from "$lib/Card.svelte";
-  import { useMachine } from "@xstate/svelte";
-  import { solitaireMachine } from "$lib/solitaireMachine";
+  import { state } from "$lib/solitaireMachine";
+  import { Layout } from "$lib/types";
 
-  // Get rid of poop global
-  const STACK_HEIGHT = 10;
+  $: ({ columns, stacks } = $state.context);
 
-  const { state, send } = useMachine(solitaireMachine);
   console.log($state.context);
 </script>
 
 <main id="layout">
-  {#each Object.entries($state.context.columns) as [name, column]}
+  {#each Object.entries(columns) as [name, column]}
     <div id={name}>
       {#each column as card}
         <Card id={card} />
@@ -20,10 +17,10 @@
     </div>
   {/each}
 
-  {#each Object.entries($state.context.stacks) as [name, stack]}
+  {#each Object.entries(stacks) as [name, stack]}
     <div id={name}>
       {#each stack as card, index}
-        {@const flipped = index < STACK_HEIGHT - 1 ? true : false}
+        {@const flipped = index < Layout.stackHeight - 1 ? true : false}
         <Card id={card} {flipped} />
       {/each}
     </div>
