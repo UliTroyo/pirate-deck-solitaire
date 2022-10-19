@@ -1,9 +1,18 @@
-import { createMachine, assign } from "xstate";
+import { createMachine } from "xstate";
+import { useMachine } from "$lib/useMachine";
+import { Deck } from "$lib/types";
 
-export function createSolitaireMachine(shuffledDeck: string[]) {
+export const solitaireMachine = createSolitaireMachine();
+export const { state, send } = useMachine(solitaireMachine);
+
+function createSolitaireMachine() {
+  const deck = new Deck();
+  const shuffledDeck = deck.cards;
+
   if (shuffledDeck.length > 60 || shuffledDeck.length < 60) {
     throw new Error(`Unexpected deck size: ${shuffledDeck.length}`);
   }
+
   const context = {
     columns: {
       column1: shuffledDeck.slice(0, 2),
@@ -29,6 +38,7 @@ export function createSolitaireMachine(shuffledDeck: string[]) {
       "stack4",
     ],
   };
+
   return createMachine(
     {
       predictableActionArguments: true,
@@ -72,15 +82,15 @@ export function createSolitaireMachine(shuffledDeck: string[]) {
         // releaseCard() {},
       },
       guards: {
-        setupComplete(context, event) {
-          return true;
-        },
-        didPlayerWin(context, event) {
-          return false;
-        },
-        didPlayerLose(context, event) {
-          return false;
-        },
+        // setupComplete(context, event) {
+        //   return true;
+        // },
+        // didPlayerWin(context, event) {
+        //   return false;
+        // },
+        // didPlayerLose(context, event) {
+        //   return false;
+        // },
       },
     }
   );

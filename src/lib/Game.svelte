@@ -2,14 +2,11 @@
   import { Deck } from "$lib/types";
   import Card from "$lib/Card.svelte";
   import { useMachine } from "@xstate/svelte";
-  import { createSolitaireMachine } from "$lib/xstateStore";
+  import { solitaireMachine } from "$lib/solitaireMachine";
 
   // Get rid of poop global
   const STACK_HEIGHT = 10;
 
-  const deck = new Deck();
-
-  const solitaireMachine = createSolitaireMachine(deck.cards);
   const { state, send } = useMachine(solitaireMachine);
   console.log($state.context);
 </script>
