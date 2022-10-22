@@ -1,14 +1,28 @@
 <script lang="ts">
   import Card from "$lib/Card.svelte";
-  import { state } from "$lib/solitaireMachine";
+  import { useMachine } from "@xstate/svelte";
   import { Layout } from "$lib/types";
+  import { createSolitaireMachine } from "$lib/solitaireMachine";
+
+  const solitaireMachine = createSolitaireMachine();
+  const { state, send } = useMachine(solitaireMachine);
 
   $: ({ columns, stacks } = $state.context);
+  $: {
+    console.log($state);
+  }
 
-  console.log($state.context);
+  function logCard(event: MouseEvent) {
+    let target = <HTMLElement>event?.target;
+    let targetIsCard = Array.from(target.classList).includes("card");
+    if (targetIsCard) {
+      console.log(target.id);
+      send({ type: "GRAB", card: target.id });
+    }
+  }
 </script>
 
-<main id="layout">
+<main id="layout" on:mousedown={logCard}>
   {#each Object.entries(columns) as [name, column]}
     <div id={name}>
       {#each column as card}

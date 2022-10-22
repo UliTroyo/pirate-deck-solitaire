@@ -1,18 +1,15 @@
 <script lang="ts">
-  import { send } from "$lib/solitaireMachine";
-
+  import { onMount } from "svelte";
   export let id: string;
   export let flipped = false;
 
   let rank = id.length == 2 ? id[0] : id[0] + id[1];
   let suit = id.length == 2 ? id[1] : id[2];
 
-  function grab() {
-    send({ type: "GRAB", card: id });
-  }
+  onMount(() => console.log("MOUNTED CARD"));
 </script>
 
-<div role="img" {id} class="card" class:flipped on:mousedown={grab}>
+<div role="img" {id} class="card" class:flipped draggable="true">
   <span class="top-left" class:rank>{rank}</span>
   {#if rank == "F0"}
     <span class="top-fool">0L</span>
@@ -49,6 +46,9 @@
     place-items: center;
     user-select: none;
     width: min(22vw, 15vh);
+  }
+  .card > span {
+    pointer-events: none;
   }
   .card.flipped {
     background-color: purple;
