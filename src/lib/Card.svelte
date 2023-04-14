@@ -5,8 +5,6 @@
 
   let rank = id.length == 2 ? id[0] : id[0] + id[1];
   let suit = id.length == 2 ? id[1] : id[2];
-
-  onMount(() => console.log("MOUNTED CARD"));
 </script>
 
 <div role="img" {id} class="card" class:flipped draggable="true">

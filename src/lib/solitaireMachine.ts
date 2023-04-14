@@ -2,6 +2,9 @@ import { createMachine } from "xstate";
 import { Deck } from "$lib/types";
 import { shuffle } from "$lib/utils/shuffle";
 
+//* TODO: Make this into a custom store that checks
+//* whether we're in the browser and does localStorage
+
 export function createSolitaireMachine() {
   console.log("STEPPING INTO CSM");
   const deck = shuffle(Deck);
